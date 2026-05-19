@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flowers & Animals</title>
+
+    <link rel="stylesheet" href="style.css?v=8">
+</head>
+
+<body>
+
+<header>
+    <h2>Flowers & Animals</h2>
+    <div class="header-droite">
+        <nav id="menu-nav">
+            <a href="#accueil">Accueil</a>
+            <a href="#promotions">Promotions</a>
+            <a href="#categories">Catégories</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="conteneur-recherche" id="conteneur-recherche">
+            <input type="text" id="champ-recherche" placeholder="Rechercher un produit..." onkeyup="chercherProduit()" autocomplete="off">
+            <button id="bouton-recherche" onclick="toggleRecherche()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </button>
+            <div id="resultats-recherche"></div>
+        </div>
+        <div class="icones">
+            <span onclick="afficherCompte()" style="cursor:pointer;" title="Créer un compte">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </span>
+            <span onclick="afficherPanier()" style="cursor:pointer;" title="Panier">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            </span>
+            <span onclick="afficherFavoris()" style="cursor:pointer;" title="Favoris">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </span>
+        </div>
+    </div>
+</header>
+
+<section class="banniere" id="accueil">
+
+    <h1>La nature au cœur de votre vie</h1>
+
+    <p>
+        Découvrez nos fleurs, plantes et animaux
+    </p>
+
+</section>
+
+<!-- Promotions -->
+
+<section id="promotions">
+
+    <h2>Promotions & Favoris</h2>
+
+    <div class="grille-produits">
+
+        <div class="element-produit" onclick="ouvrirPopup('Orchidée Blanche', '<del>45€</del> 32€', 'imagespromo/orchidee-promo.jpg', 'Fleur raffinée parfaite pour décoration intérieure.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagespromo/orchidee-promo.jpg" alt="Orchidée">
+                <h3>Orchidée Blanche</h3>
+                <p>Fleur raffinée parfaite pour décoration intérieure.</p>
+                <p><del>45€</del> 32€</p>
+            </div>
+        </div>
+
+        <div class="element-produit" onclick="ouvrirPopup('Bouledogue Français', '650€', 'imagespromo/bouledogue.jpg', 'Chien affectueux et très apprécié des familles.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagespromo/bouledogue.jpg" alt="Bouledogue">
+                <h3>Bouledogue Français</h3>
+                <p>Chien affectueux et très apprécié des familles.</p>
+                <p>650€</p>
+            </div>
+        </div>
+
+        <div class="element-produit" onclick="ouvrirPopup('Bonsaï Japonais', '<del>60€</del> 45€', 'imagespromo/bonsai.jpg', 'Petite plante élégante idéale pour intérieur zen.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagespromo/bonsai.jpg" alt="Bonsaï">
+                <h3>Bonsaï Japonais</h3>
+                <p>Petite plante élégante idéale pour intérieur zen.</p>
+                <p><del>60€</del> 45€</p>
+            </div>
+        </div>
+
+        <div class="element-produit" onclick="ouvrirPopup('Fontaine Décorative', '<del>80€</del> 59€', 'imagespromo/fontaine.jpg', 'Accessoire décoratif pour jardin et terrasse.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagespromo/fontaine.jpg" alt="Fontaine">
+                <h3>Fontaine Décorative</h3>
+                <p>Accessoire décoratif pour jardin et terrasse.</p>
+                <p><del>80€</del> 59€</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Catégories -->
+
+<section id="categories">
+
+    <h2>Nos catégories</h2>
+
+    <div class="onglets">
+
+        <button class="onglet actif" onclick="filtrerBouton(this, 'Tout')">Tout</button>
+        <button class="onglet" onclick="filtrerBouton(this, 'Animal')">Animal</button>
+        <button class="onglet" onclick="filtrerBouton(this, 'Fleur')">Fleur</button>
+        <button class="onglet" onclick="filtrerBouton(this, 'Plante')">Plante</button>
+        <button class="onglet" onclick="filtrerBouton(this, 'Accessoire')">Accessoire</button>
+
+    </div>
+
+    <div class="grille-produits">
+
+        <div class="element-produit Animal" onclick="ouvrirPopup('Chat Persan', '250€', 'imagescategories/animaux/chat-persan.jpg', 'Chat calme et affectueux idéal pour la maison.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/animaux/chat-persan.jpg" alt="Chat Persan">
+                <h3>Chat Persan</h3>
+                <p>Chat calme et affectueux idéal pour la maison.</p>
+                <p>250€</p>
+            </div>
+        </div>
+        <div class="element-produit Animal" onclick="ouvrirPopup('Lapin Nain', '45€', 'imagescategories/animaux/lapin.jpg', 'Petit compagnon doux et facile à entretenir.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/animaux/lapin.jpg" alt="Lapin">
+                <h3>Lapin Nain</h3>
+                <p>Petit compagnon doux et facile à entretenir.</p>
+                <p>45€</p>
+            </div>
+        </div>
+        <div class="element-produit Animal" onclick="ouvrirPopup('Poisson Rouge', '12€', 'imagescategories/animaux/poisson.jpg', 'Poisson d\'eau douce parfait pour aquarium.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/animaux/poisson.jpg" alt="Poisson Rouge">
+                <h3>Poisson Rouge</h3>
+                <p>Poisson d'eau douce parfait pour aquarium.</p>
+                <p>12€</p>
+            </div>
+        </div>
+        <div class="element-produit Animal" onclick="ouvrirPopup('Hamster Doré', '20€', 'imagescategories/animaux/hamster.jpg', 'Petit animal joueur et facile à apprivoiser.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/animaux/hamster.jpg" alt="Hamster">
+                <h3>Hamster Doré</h3>
+                <p>Petit animal joueur et facile à apprivoiser.</p>
+                <p>20€</p>
+            </div>
+        </div>
+
+        <div class="element-produit Fleur" onclick="ouvrirPopup('Rose Rouge', '20€', 'imagescategories/fleurs/rose.jpg', 'Fleur élégante parfaite pour déclarer sa flamme.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/fleurs/rose.jpg" alt="Rose">
+                <h3>Rose Rouge</h3>
+                <p>Fleur élégante parfaite pour déclarer sa flamme.</p>
+                <p>20€</p>
+            </div>
+        </div>
+        <div class="element-produit Fleur" onclick="ouvrirPopup('Orchidée Blanche', '35€', 'imagescategories/fleurs/orchidee.jpg', 'Fleur raffinée, idéale pour la décoration.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/fleurs/orchidee.jpg" alt="Orchidée">
+                <h3>Orchidée Blanche</h3>
+                <p>Fleur raffinée, idéale pour la décoration.</p>
+                <p>35€</p>
+            </div>
+        </div>
+        <div class="element-produit Fleur" onclick="ouvrirPopup('Pivoine Rose', '25€', 'imagescategories/fleurs/pivoine.jpg', 'Fleur délicate et parfumée pour embellir vos intérieurs.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/fleurs/pivoine.jpg" alt="Pivoine">
+                <h3>Pivoine Rose</h3>
+                <p>Fleur délicate et parfumée pour embellir vos intérieurs.</p>
+                <p>25€</p>
+            </div>
+        </div>
+        <div class="element-produit Fleur" onclick="ouvrirPopup('Tulipe Jaune', '15€', 'imagescategories/fleurs/tulipe.jpg', 'Belle fleur printanière qui illumine les jardins.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/fleurs/tulipe.jpg" alt="Tulipe">
+                <h3>Tulipe Jaune</h3>
+                <p>Belle fleur printanière qui illumine les jardins.</p>
+                <p>15€</p>
+            </div>
+        </div>
+
+        <div class="element-produit Plante" onclick="ouvrirPopup('Monstera', '30€', 'imagescategories/plantes/monstera.jpg', 'Plante tropicale idéale pour une touche exotique à la maison.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/plantes/monstera.jpg" alt="Monstera">
+                <h3>Monstera</h3>
+                <p>Plante tropicale idéale pour une touche exotique à la maison.</p>
+                <p>30€</p>
+            </div>
+        </div>
+        <div class="element-produit Plante" onclick="ouvrirPopup('Ficus', '40€', 'imagescategories/plantes/ficus.jpg', 'Plante majestueuse, parfaite pour garnir un salon.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/plantes/ficus.jpg" alt="Ficus">
+                <h3>Ficus</h3>
+                <p>Plante majestueuse, parfaite pour garnir un salon.</p>
+                <p>40€</p>
+            </div>
+        </div>
+        <div class="element-produit Plante" onclick="ouvrirPopup('Bonsaï Japonais', '45€', 'imagescategories/plantes/bonsai.jpg', 'Petite plante élégante idéale pour un intérieur zen.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/plantes/bonsai.jpg" alt="Bonsaï">
+                <h3>Bonsaï Japonais</h3>
+                <p>Petite plante élégante idéale pour un intérieur zen.</p>
+                <p>45€</p>
+            </div>
+        </div>
+        <div class="element-produit Plante" onclick="ouvrirPopup('Aloe Vera', '15€', 'imagescategories/plantes/aloe-vera.jpg', 'Plante médicinale facile d\'entretien, apaisante et esthétique.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/plantes/aloe-vera.jpg" alt="Aloe Vera">
+                <h3>Aloe Vera</h3>
+                <p>Plante médicinale facile d'entretien, apaisante et esthétique.</p>
+                <p>15€</p>
+            </div>
+        </div>
+
+        <div class="element-produit Accessoire" onclick="ouvrirPopup('Pot en argile', '15€', 'imagescategories/accessoires/pot.jpg', 'Pot décoratif traditionnel et respirant pour vos plantes.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/accessoires/pot.jpg" alt="Pot">
+                <h3>Pot en argile</h3>
+                <p>Pot décoratif traditionnel et respirant pour vos plantes.</p>
+                <p>15€</p>
+            </div>
+        </div>
+        <div class="element-produit Accessoire" onclick="ouvrirPopup('Fontaine Décorative', '59€', 'imagescategories/accessoires/fontaine.jpg', 'Accessoire apaisant pour jardin et terrasse.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/accessoires/fontaine.jpg" alt="Fontaine">
+                <h3>Fontaine Décorative</h3>
+                <p>Accessoire apaisant pour jardin et terrasse.</p>
+                <p>59€</p>
+            </div>
+        </div>
+        <div class="element-produit Accessoire" onclick="ouvrirPopup('Laisse pour chien', '12€', 'imagescategories/accessoires/laisse.jpg', 'Laisse robuste et confortable pour des balades en toute sécurité.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/accessoires/laisse.jpg" alt="Laisse">
+                <h3>Laisse pour chien</h3>
+                <p>Laisse robuste et confortable pour des balades en toute sécurité.</p>
+                <p>12€</p>
+            </div>
+        </div>
+        <div class="element-produit Accessoire" onclick="ouvrirPopup('Cage pour oiseau', '80€', 'imagescategories/accessoires/cage.jpg', 'Cage spacieuse et sécurisée avec perchoirs et mangeoires.')" style="cursor:pointer;">
+            <div class="carte-produit">
+                <img class="image-produit" src="imagescategories/accessoires/cage.jpg" alt="Cage">
+                <h3>Cage pour oiseau</h3>
+                <p>Cage spacieuse et sécurisée avec perchoirs et mangeoires.</p>
+                <p>80€</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Inspiration -->
+
+<section>
+
+    <h2>Inspiration & Conseils</h2>
+
+    <div class="inspiration-grille">
+
+        <div class="carte-large" onclick="ouvrirPopupInspi('Les plus belles fleurs du printemps', 'imagesinspi/fleur.jpg', 'Au printemps, la nature renaît et nous offre une palette de couleurs éclatantes. Découvrez notre sélection de fleurs colorées telles que les tulipes, les jonquilles et les jacinthes pour embellir votre intérieur et apporter de la fraîcheur à vos espaces de vie.')" style="cursor:pointer;">
+
+            <img class="image-large" src="imagesinspi/fleur.jpg" alt="Fleurs">
+
+            <div class="texte">
+
+                <h3>Les plus belles fleurs du printemps</h3>
+
+                <p>
+                    Découvrez notre sélection de fleurs colorées pour embellir votre intérieur.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="colonne-droite">
+
+            <div class="carte-petite" onclick="ouvrirPopupInspi('Comment bien prendre soin de son chat ?', 'imagesinspi/chatphoto.jpeg', 'Découvrez les meilleures astuces pour garantir le bien-être de votre félin. De la bonne alimentation à l\'aménagement de son espace de jeu, en passant par les visites régulières chez le vétérinaire, nous vous donnons tous les conseils pour un chat en pleine forme.')" style="cursor:pointer;">
+
+                <img class="image-petite" src="imagesinspi/chatphoto.jpeg" alt="Chat">
+
+                <div class="texte">
+
+                    <h3>Comment bien prendre soin de son chat ?</h3>
+
+                    <p>
+                        Retrouvez nos conseils bien-être pour votre animal.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="carte-petite" onclick="ouvrirPopupInspi('Les meilleures plantes pour un appartement', 'imagesinspi/plante.jpg', 'Vous n\'avez pas la main verte ? Pas de panique ! Voici une liste des plantes d\'intérieur les plus robustes et faciles à entretenir. Le Monstera, le Pilea ou encore les succulentes sont idéales pour purifier votre air sans demander trop d\'efforts.')" style="cursor:pointer;">
+
+                <img class="image-petite" src="imagesinspi/plante.jpg" alt="Plante">
+
+                <div class="texte">
+
+                    <h3>Les meilleures plantes pour un appartement</h3>
+
+                    <p>
+                        Des plantes faciles à entretenir pour votre intérieur.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Localisation -->
+
+<section>
+
+    <h2>Trouver notre magasin</h2>
+
+    <div class="carte-localisation">
+
+        <iframe 
+            class="cadre-carte"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.999267170432!2d2.292292615674792!3d48.858373079287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fdeb7f1e3f1%3A0x5d8b3c1d0f7e0b5f!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1710000000000!5m2!1sfr!2sfr"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+
+        <div class="adresse">
+
+            <h3>Flowers & Animals</h3>
+
+            <p>5 Avenue Anatole France</p>
+
+            <p>75007 Paris</p>
+
+            <p>01 23 45 67 89</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Contact -->
+
+<section id="contact">
+
+    <h2>Contactez-nous</h2>
+
+    <p>
+        Une question ? Notre équipe est disponible pour vous répondre.
+    </p>
+
+    <form class="formulaire-contact">
+
+        <div class="colonne-formulaire">
+
+            <label>Nom *</label>
+            <input type="text" required>
+
+            <label>Prénom *</label>
+            <input type="text" required>
+
+            <label>Email *</label>
+            <input type="email" required>
+
+            <label>Téléphone *</label>
+            <input type="tel" required>
+
+        </div>
+
+        <div class="colonne-formulaire">
+
+            <label>Motif *</label>
+
+            <label><input type="radio" name="motif" required> Information</label>
+            <label><input type="radio" name="motif"> Produit</label>
+
+            <label>Message *</label>
+
+            <textarea required></textarea>
+
+            <button type="submit">Envoyer</button>
+
+        </div>
+
+    </form>
+
+</section>
+
+<footer>
+
+    Flowers & Animals - 2026
+
+</footer>
+
+<div class="banniere-cookies" id="popup-cookies">
+
+    <p>Ce site utilise des cookies. Veuillez faire un choix :</p>
+
+    <div class="cookie-checkboxes">
+        <label><input type="checkbox" id="check-accepter" onchange="accepterCookies()"> Accepter</label>
+        <label><input type="checkbox" id="check-refuser" onchange="refuserCookies()"> Refuser</label>
+    </div>
+
+</div>
+
+<section class="popup-produit" id="popup">
+    <div class="contenu-popup">
+        <button class="bouton-fermer" id="btn-fermer" onclick="fermerPopup()">&times;</button>
+        <div class="popup-gauche">
+            <img class="image-principale-popup" id="image-principale" src="imagescategories/fleurs/rose.jpg" alt="Produit">
+            <div class="mini-images-popup">
+                <img class="mini-image" src="" alt="Miniature 1">
+                <img class="mini-image" src="" alt="Miniature 2">
+                <img class="mini-image" src="" alt="Miniature 3">
+            </div>
+        </div>
+        <div class="popup-droite">
+            <h2 id="popup-titre">Détails du Produit</h2>
+            <p class="prix" id="popup-prix">Prix indicatif</p>
+            <p id="popup-desc">
+                Description du produit ici...
+            </p>
+            <h3>Taille / Option</h3>
+            <div class="tailles">
+                <button class="bouton-taille" style="background-color: black; color: white;" onclick="changerTaille(this)">S</button>
+                <button class="bouton-taille" style="background-color: white; color: black;" onclick="changerTaille(this)">M</button>
+                <button class="bouton-taille" style="background-color: white; color: black;" onclick="changerTaille(this)">L</button>
+            </div>
+            <h3>Quantité</h3>
+            <input type="number" value="1" min="1">
+            <div class="boutons-popup">
+                <button id="btn-panier" onclick="ajouterPanier()">Ajouter au panier</button>
+                <button id="btn-favoris" class="btn-fav" onclick="toggleFavoris()">♡ Favoris</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="popup-produit" id="popup-favoris">
+    <div class="contenu-popup" style="flex-direction: column;">
+        <button class="bouton-fermer" onclick="document.getElementById('popup-favoris').style.display='none'">&times;</button>
+        <h2>Vos Favoris</h2>
+        <div id="contenu-liste-favoris" style="display:flex; flex-direction:column; gap:10px; margin-top:20px;">
+        </div>
+    </div>
+</section>
+
+<section class="popup-produit" id="popup-panier">
+    <div class="contenu-popup" style="flex-direction: column;">
+        <button class="bouton-fermer" onclick="document.getElementById('popup-panier').style.display='none'">&times;</button>
+        <h2>Votre Panier</h2>
+        <div id="contenu-liste-panier" style="display:flex; flex-direction:column; gap:10px; margin-top:20px;">
+        </div>
+        <button style="margin-top:20px; padding:10px; background:linear-gradient(135deg, #e67e22, #d35400); color:white; border:none; border-radius:5px; cursor:pointer;" onclick="alert('Commande validée !')">Valider la commande</button>
+    </div>
+</section>
+
+<section class="popup-produit" id="popup-compte">
+    <div class="contenu-popup" style="flex-direction: column; max-width: 400px;">
+        <button class="bouton-fermer" onclick="document.getElementById('popup-compte').style.display='none'">&times;</button>
+        <h2 style="text-align: center; margin-bottom: 20px;">Créer un compte</h2>
+        <form class="formulaire-compte" style="display: flex; flex-direction: column; gap: 15px;" onsubmit="creerCompte(event)">
+            <label style="display: flex; flex-direction: column; gap: 5px;">Nom *
+                <input type="text" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 5px;">Prénom *
+                <input type="text" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 5px;">Email *
+                <input type="email" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 5px;">Mot de passe *
+                <input type="password" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </label>
+            <button type="submit" class="bouton-degrade" style="margin-top: 10px;">S'inscrire</button>
+        </form>
+    </div>
+</section>
+
+<section class="popup-produit" id="popup-inspi">
+    <div class="contenu-popup" style="flex-direction: column; align-items: center; text-align: center;">
+        <button class="bouton-fermer" onclick="document.getElementById('popup-inspi').style.display='none'">&times;</button>
+        <img id="inspi-img" src="" style="width:100%; max-height:400px; object-fit:cover; border-radius:10px; margin-bottom:20px;">
+        <h2 id="inspi-titre" style="margin-bottom:15px;">Titre</h2>
+        <p id="inspi-desc" style="line-height: 1.6;">Description</p>
+    </div>
+</section>
+
+<script src="script.js?v=2"></script>
+</body>
+
+</html>
