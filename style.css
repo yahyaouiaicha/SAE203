@@ -144,7 +144,7 @@ nav a:hover::after, nav a.actif::after{
 
 .banniere{
     height:60vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imagesinspi/fleur.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('fleur.jpg') center/cover no-repeat;
     display:flex;
     flex-direction:column;
     justify-content:center;
